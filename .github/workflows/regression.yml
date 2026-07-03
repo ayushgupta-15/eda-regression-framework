@@ -11,18 +11,18 @@ jobs:
 
     steps:
       - name: Checkout framework
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           path: eda-regression-framework
 
       - name: Checkout RISC-V Pipeline
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ash/riscv-pipeline # Update to actual GitHub repository path
           path: riscv-pipeline
           
       - name: Checkout AXI4-Lite
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           repository: ash/axi4-lite-interconnect-sv # Update to actual GitHub repository path
           path: axi4-lite-interconnect-sv
@@ -55,7 +55,7 @@ jobs:
           python -m src.cli run-all
 
       - name: Publish Regression Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: regression-report
