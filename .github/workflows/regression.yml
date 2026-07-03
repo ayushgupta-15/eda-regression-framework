@@ -18,7 +18,7 @@ jobs:
       - name: Checkout RISC-V Pipeline
         uses: actions/checkout@v4
         with:
-          repository: ayushgupta-15/riscv-pipeline # Update to actual GitHub repository path
+          repository: ayushgupta-15/rv32i-5stage-pipelined-processor # Update to actual GitHub repository path
           path: riscv-pipeline
           
       - name: Checkout AXI4-Lite
