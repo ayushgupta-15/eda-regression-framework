@@ -1,0 +1,13 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Framework outputs
+logs/
+reports/
+
+# Virtual environment
+venv/
+env/
+.env

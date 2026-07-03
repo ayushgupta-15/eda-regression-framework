@@ -1,0 +1,23 @@
+name: serial-protocol-library
+repo_path: ../serial-protocol-library
+test_targets:
+  - name: test_uart_tx
+    run_cmd: "make test_uart_tx"
+    adapter: generic
+    timeout_s: 30
+  - name: test_baud_gen
+    run_cmd: "make test_baud_gen"
+    adapter: generic
+    timeout_s: 30
+  - name: test_uart_rx
+    run_cmd: "make test_uart_rx"
+    adapter: generic
+    timeout_s: 30
+  - name: test_spi_master
+    run_cmd: "make test_spi_master"
+    adapter: generic
+    timeout_s: 30
+  - name: test_i2c_single_byte
+    run_cmd: "make test_i2c_single_byte"
+    adapter: icarus
+    timeout_s: 30

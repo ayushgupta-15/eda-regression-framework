@@ -1,0 +1,15 @@
+name: rv32i-5stage-pipelined-processor
+repo_path: ../riscv-pipeline
+test_targets:
+  - name: alu_test
+    run_cmd: "make test_alu"
+    adapter: icarus
+    timeout_s: 30
+  - name: alu_control_test
+    run_cmd: "make test_alu_control"
+    adapter: icarus
+    timeout_s: 30
+  - name: reg_file_test
+    run_cmd: "make test_reg_file"
+    adapter: icarus
+    timeout_s: 30

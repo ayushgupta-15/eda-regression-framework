@@ -1,0 +1,23 @@
+name: axi4-lite-interconnect
+repo_path: ../axi4-lite-interconnect-sv
+test_targets:
+  - name: test_axi_if
+    run_cmd: "make test_axi_if"
+    adapter: generic
+    timeout_s: 30
+  - name: test_decoder
+    run_cmd: "make test_decoder"
+    adapter: generic
+    timeout_s: 30
+  - name: test_memory_slave
+    run_cmd: "make test_memory_slave"
+    adapter: generic
+    timeout_s: 30
+  - name: test_register_slave
+    run_cmd: "make test_register_slave"
+    adapter: generic
+    timeout_s: 30
+  - name: test_arbiter
+    run_cmd: "make test_arbiter"
+    adapter: icarus
+    timeout_s: 30

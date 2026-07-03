@@ -1,0 +1,62 @@
+name: EDA Regression
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  run-regression:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout framework
+        uses: actions/checkout@v3
+        with:
+          path: eda-regression-framework
+
+      - name: Checkout RISC-V Pipeline
+        uses: actions/checkout@v3
+        with:
+          repository: ash/riscv-pipeline # Update to actual GitHub repository path
+          path: riscv-pipeline
+          
+      - name: Checkout AXI4-Lite
+        uses: actions/checkout@v3
+        with:
+          repository: ash/axi4-lite-interconnect-sv # Update to actual GitHub repository path
+          path: axi4-lite-interconnect-sv
+          
+      - name: Checkout Serial Protocol
+        uses: actions/checkout@v3
+        with:
+          repository: ash/serial-protocol-library # Update to actual GitHub repository path
+          path: serial-protocol-library
+
+      - name: Install Simulator Tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog verilator
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python Requirements
+        run: |
+          cd eda-regression-framework
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run All Tests
+        run: |
+          cd eda-regression-framework
+          python -m src.cli run-all
+
+      - name: Publish Regression Report
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: regression-report
+          path: eda-regression-framework/reports/index.html
