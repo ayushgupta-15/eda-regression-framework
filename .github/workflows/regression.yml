@@ -49,6 +49,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Prepare Repositories
+        run: |
+          mkdir -p serial-protocol-library/sim
+          mkdir -p serial-protocol-library/sim/waves
+
       - name: Run All Tests
         run: |
           cd eda-regression-framework
